@@ -98,6 +98,7 @@ public class Naca4Fragment extends Fragment{
             }
         });
 
+
         return view;
     }
 
