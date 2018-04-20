@@ -19,7 +19,7 @@ import android.widget.Toast;
  */
 
 public class Naca5Fragment extends Fragment{
-    private Button buttonNext;
+    private Button buttonNext, buttonClean;
     private static  final String TAB = "Naca5Fragment";
     public static String NO1 = "1";
     public static String NO2 = "2";
@@ -34,6 +34,7 @@ public class Naca5Fragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.naca5_fragment,container,false);
         buttonNext = (Button) view.findViewById(R.id.next_button1);
+        buttonClean = (Button) view.findViewById(R.id.clean_button1);
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +72,7 @@ public class Naca5Fragment extends Fragment{
                     startActivity(intent);
                 } catch (Exception e){
 
-                    AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                    AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
                     alertDialog.setTitle("Error");
                     alertDialog.setMessage("Wystapil blad");
                     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
@@ -83,6 +84,27 @@ public class Naca5Fragment extends Fragment{
                     alertDialog.show();
 
                 }
+            }
+        });
+
+        buttonClean.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText naca1 = (EditText) getView().findViewById(R.id.naca_edit_1);
+                EditText naca2 = (EditText) getView().findViewById(R.id.naca_edit_2);
+                EditText naca3 = (EditText) getView().findViewById(R.id.naca_edit_3);
+                EditText naca4 = (EditText) getView().findViewById(R.id.naca_edit_4);
+                EditText xb = (EditText) getView().findViewById(R.id.xb);
+                EditText chord = (EditText) getView().findViewById(R.id.chord);
+                EditText f = (EditText) getView().findViewById(R.id.f);
+
+                naca1.setText("");
+                naca2.setText("");
+                naca3.setText("");
+                naca4.setText("");
+                xb.setText("");
+                chord.setText("");
+                f.setText("");
             }
         });
 

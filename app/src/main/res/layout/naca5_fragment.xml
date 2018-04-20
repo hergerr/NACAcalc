@@ -6,7 +6,7 @@
     android:paddingBottom="@dimen/standard_spacing"
     android:paddingRight="@dimen/standard_spacing"
     android:paddingLeft="@dimen/standard_spacing"
-    android:columnCount="7"
+    android:columnCount="5"
     android:rowCount="14">
 
     <TextView
@@ -140,16 +140,26 @@
         android:layout_row="3"
         android:layout_marginLeft="@dimen/standard_spacing"/>
 
+
+    <Button
+        android:id="@+id/clean_button1"
+        android:layout_marginTop="@dimen/standard_spacing"
+        android:text="@string/clean"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_gravity="right"
+        />
+
     <Button
         android:id="@+id/next_button1"
         android:text="@string/next"
         android:layout_row="4"
-        android:layout_column="0"
+        android:layout_column="3"
         android:layout_marginTop="@dimen/standard_spacing"
-        android:layout_gravity="right"
-        android:layout_columnSpan="7"
+        android:layout_gravity="left"
+        android:layout_columnSpan="2"
         />
-
 
 
 

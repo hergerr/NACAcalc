@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 public class Naca4Fragment extends Fragment{
 
-    private Button buttonNext;
+    private Button buttonNext, buttonClean;
     private static  final String TAB = "Naca4Fragment";
     public static String N1 = "1";
     public static String N2 = "2";
@@ -32,6 +32,7 @@ public class Naca4Fragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.naca4_fragment,container,false);
         buttonNext = (Button) view.findViewById(R.id.next_button);
+        buttonClean = (Button) view.findViewById(R.id.clean_button);
 
         buttonNext.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -66,7 +67,7 @@ public class Naca4Fragment extends Fragment{
                     AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
                     alertDialog.setTitle("ERROR");
                     alertDialog.setMessage("WYSTAPIL BLAD");
-                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "NIC NA TO NIE PORADZE",
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
@@ -75,6 +76,25 @@ public class Naca4Fragment extends Fragment{
                     alertDialog.show();
 
                 }
+            }
+        });
+
+        buttonClean.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                EditText naca1 = (EditText) getView().findViewById(R.id.naca_edit_1);
+                EditText naca2 = (EditText) getView().findViewById(R.id.naca_edit_2);
+                EditText naca3 = (EditText) getView().findViewById(R.id.naca_edit_3);
+                EditText xb = (EditText) getView().findViewById(R.id.xb);
+                EditText chord = (EditText) getView().findViewById(R.id.chord);
+
+                naca1.setText("");
+                naca2.setText("");
+                naca3.setText("");
+                xb.setText("");
+                chord.setText("");
+
             }
         });
 

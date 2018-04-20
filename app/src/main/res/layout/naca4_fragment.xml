@@ -8,7 +8,7 @@
     android:paddingBottom="@dimen/standard_spacing"
     android:paddingRight="@dimen/standard_spacing"
     android:paddingLeft="@dimen/standard_spacing"
-    android:columnCount="6"
+    android:columnCount="4"
     android:rowCount="14"
     tools:context="com.example.tymek.nacacalc.Naca4Fragment">
 
@@ -110,16 +110,24 @@
 
 
     <Button
+        android:id="@+id/clean_button"
+        android:text="@string/clean"
+        android:layout_row="3"
+        android:layout_column="2"
+        android:layout_marginTop="@dimen/standard_spacing"
+        android:layout_gravity="right"
+        android:layout_columnSpan="1"
+        />
+
+    <Button
         android:id="@+id/next_button"
         android:text="@string/next"
         android:layout_row="3"
-        android:layout_column="0"
+        android:layout_column="3"
         android:layout_marginTop="@dimen/standard_spacing"
-        android:layout_gravity="right"
-        android:layout_columnSpan="6"
+        android:layout_gravity="left"
+        android:layout_columnSpan="1"
         />
-
-
 
 
 </GridLayout>
