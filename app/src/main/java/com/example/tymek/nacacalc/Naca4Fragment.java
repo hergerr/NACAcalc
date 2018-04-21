@@ -94,8 +94,6 @@ public class Naca4Fragment extends Fragment{
                 naca3.setText("");
                 xb.setText("");
                 chord.setText("");
-                //ss
-
             }
         });
 
