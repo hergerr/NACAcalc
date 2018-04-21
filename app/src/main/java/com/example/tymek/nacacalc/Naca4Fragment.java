@@ -65,8 +65,8 @@ public class Naca4Fragment extends Fragment{
                 } catch (Exception e){
 
                     AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
-                    alertDialog.setTitle("ERROR");
-                    alertDialog.setMessage("WYSTAPIL BLAD");
+                    alertDialog.setTitle("Błąd");
+                    alertDialog.setMessage("Wprowadzono niepasujące dane");
                     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
