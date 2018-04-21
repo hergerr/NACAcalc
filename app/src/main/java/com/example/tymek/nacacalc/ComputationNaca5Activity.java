@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import static com.example.tymek.nacacalc.Naca5Fragment.CHOORD;
 import static com.example.tymek.nacacalc.Naca5Fragment.FO;
 import static com.example.tymek.nacacalc.Naca5Fragment.NO1;
@@ -15,11 +19,17 @@ import static com.example.tymek.nacacalc.Naca5Fragment.XOB;
 import static java.lang.Math.sqrt;
 
 public class ComputationNaca5Activity extends AppCompatActivity {
+    AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_computation_naca5);
+
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544/6300978111");
+        adView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();

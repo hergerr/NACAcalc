@@ -9,7 +9,7 @@
     android:verticalSpacing="8dp"
     android:horizontalSpacing="8dp"
     android:columnCount="2"
-    android:rowCount="10">
+    android:rowCount="11">
 
     <TextView
         android:text="@string/max_arrow"
@@ -159,6 +159,27 @@
         android:layout_marginLeft="@dimen/standard_spacing"
         android:layout_row="9"
         android:layout_column="1"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_row="10"
+        android:layout_columnSpan="2"
+        android:orientation="horizontal"
+        >
+        <com.google.android.gms.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+        </com.google.android.gms.ads.AdView>
+    </LinearLayout>
+
 
 
 
