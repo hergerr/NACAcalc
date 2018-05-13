@@ -1,4 +1,4 @@
-package com.example.tymek.nacacalc;
+package com.frankiewiczsoftware.tymek.nacacalc;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -10,7 +10,7 @@
     android:paddingLeft="@dimen/standard_spacing"
     android:columnCount="4"
     android:rowCount="14"
-    tools:context="com.example.tymek.nacacalc.Naca4Fragment">
+    tools:context="com.frankiewiczsoftware.tymek.nacacalc.Naca4Fragment">
 
     <TextView
         android:id="@+id/lol"

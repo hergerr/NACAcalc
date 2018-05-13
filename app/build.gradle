@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.example.tymek.nacacalc"
+        applicationId "com.frankiewiczsoftware.tymek.nacacalc"
         minSdkVersion 21
         targetSdkVersion 26
         versionCode 1

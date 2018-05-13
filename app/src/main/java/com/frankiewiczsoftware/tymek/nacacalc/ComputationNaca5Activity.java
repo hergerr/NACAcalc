@@ -1,4 +1,4 @@
-package com.example.tymek.nacacalc;
+package com.frankiewiczsoftware.tymek.nacacalc;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,13 +9,13 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
-import static com.example.tymek.nacacalc.Naca5Fragment.CHOORD;
-import static com.example.tymek.nacacalc.Naca5Fragment.FO;
-import static com.example.tymek.nacacalc.Naca5Fragment.NO1;
-import static com.example.tymek.nacacalc.Naca5Fragment.NO2;
-import static com.example.tymek.nacacalc.Naca5Fragment.NO3;
-import static com.example.tymek.nacacalc.Naca5Fragment.NO4;
-import static com.example.tymek.nacacalc.Naca5Fragment.XOB;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.CHOORD;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.FO;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.NO1;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.NO2;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.NO3;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.NO4;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.XOB;
 import static java.lang.Math.sqrt;
 
 public class ComputationNaca5Activity extends AppCompatActivity {
@@ -26,8 +26,8 @@ public class ComputationNaca5Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_computation_naca5);
 
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544/6300978111");
-        adView = (AdView) findViewById(R.id.adView);
+        MobileAds.initialize(this,"ca-app-pub-4960960624269878~4237480021");
+        adView = (AdView) findViewById(R.id.adView1);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
