@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
         adapter.addFragment(new Naca4Fragment(), "NACA4");
         adapter.addFragment(new Naca5Fragment(), "NACA5");
+        adapter.addFragment(new Naca5v2Fragment(), "NACA5v2");
+        adapter.addFragment(new Naca6Fragment(), "NACA6");
         viewPager.setAdapter(adapter);
     }
 }

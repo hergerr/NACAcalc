@@ -1,5 +1,6 @@
 package com.frankiewiczsoftware.tymek.nacacalc;
 
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,10 +15,9 @@ import android.widget.EditText;
 
 
 /**
- * Created by Tymek on 2018-04-19.
+ * A simple {@link Fragment} subclass.
  */
-
-public class Naca5Fragment extends Fragment{
+public class Naca5v2Fragment extends Fragment {
     private Button buttonNext, buttonClean;
     private static  final String TAB = "Naca5Fragment";
     public static String NO1 = "1";
@@ -27,13 +27,14 @@ public class Naca5Fragment extends Fragment{
     public static String XOB = "5";
     public static String CHORD = "6";
     public static String FO = "7";
+    public static String K1 = "8";
 
-    double naca1Value, naca2Value, naca3Value, naca4Value, xbValue, chordValue, fValue;
+    double naca1Value, naca2Value, naca3Value, naca4Value, xbValue, chordValue, fValue, k1Value;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.naca5_fragment,container,false);
+        View view = inflater.inflate(R.layout.fragment_naca5v2,container,false);
         buttonNext = (Button) view.findViewById(R.id.next_button1);
         buttonClean = (Button) view.findViewById(R.id.clean_button1);
 
@@ -50,6 +51,7 @@ public class Naca5Fragment extends Fragment{
                     EditText chord = (EditText) getView().findViewById(R.id.chord);
                     EditText f = (EditText) getView().findViewById(R.id.f);
 
+
                     naca1Value = Double.parseDouble(naca1.getText().toString());
                     naca2Value = Double.parseDouble(naca2.getText().toString());
                     naca3Value = Double.parseDouble(naca3.getText().toString());
@@ -58,6 +60,7 @@ public class Naca5Fragment extends Fragment{
                     xbValue = Double.parseDouble(xb.getText().toString());
                     chordValue = Double.parseDouble(chord.getText().toString());
                     fValue = Double.parseDouble(f.getText().toString());
+                    k1Value = Double.parseDouble(f.getText().toString());
 
                     Intent intent = new Intent(getActivity(), ComputationNaca5Activity.class);
                     Bundle extras = new Bundle();
@@ -68,6 +71,7 @@ public class Naca5Fragment extends Fragment{
                     extras.putDouble(XOB, xbValue);
                     extras.putDouble(CHORD, chordValue);
                     extras.putDouble(FO, fValue);
+                    extras.putDouble(K1, k1Value);
 
                     intent.putExtras(extras);
                     startActivity(intent);
@@ -98,6 +102,7 @@ public class Naca5Fragment extends Fragment{
                 EditText xb = (EditText) getView().findViewById(R.id.xb);
                 EditText chord = (EditText) getView().findViewById(R.id.chord);
                 EditText f = (EditText) getView().findViewById(R.id.f);
+                EditText k1 =(EditText) getView().findViewById(R.id.k1);
 
                 naca1.setText("");
                 naca2.setText("");
@@ -106,10 +111,10 @@ public class Naca5Fragment extends Fragment{
                 xb.setText("");
                 chord.setText("");
                 f.setText("");
+                k1.setText("");
             }
         });
 
         return  view;
     }
-
 }

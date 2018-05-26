@@ -1,5 +1,6 @@
 package com.frankiewiczsoftware.tymek.nacacalc;
 
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
-/**
- * Created by Tymek on 2018-04-19.
- */
+public class Naca6Fragment extends Fragment {
 
-public class Naca5Fragment extends Fragment{
     private Button buttonNext, buttonClean;
     private static  final String TAB = "Naca5Fragment";
     public static String NO1 = "1";
@@ -26,14 +24,13 @@ public class Naca5Fragment extends Fragment{
     public static String NO4 = "4";
     public static String XOB = "5";
     public static String CHORD = "6";
-    public static String FO = "7";
 
-    double naca1Value, naca2Value, naca3Value, naca4Value, xbValue, chordValue, fValue;
+    double naca1Value, naca2Value, naca3Value, naca4Value, xbValue, chordValue;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.naca5_fragment,container,false);
+        View view = inflater.inflate(R.layout.fragment_naca6,container,false);
         buttonNext = (Button) view.findViewById(R.id.next_button1);
         buttonClean = (Button) view.findViewById(R.id.clean_button1);
 
@@ -57,9 +54,8 @@ public class Naca5Fragment extends Fragment{
 
                     xbValue = Double.parseDouble(xb.getText().toString());
                     chordValue = Double.parseDouble(chord.getText().toString());
-                    fValue = Double.parseDouble(f.getText().toString());
 
-                    Intent intent = new Intent(getActivity(), ComputationNaca5Activity.class);
+                    Intent intent = new Intent(getActivity(), ComputationNaca6Activity.class);
                     Bundle extras = new Bundle();
                     extras.putDouble(NO1, naca1Value);
                     extras.putDouble(NO2, naca2Value);
@@ -67,7 +63,6 @@ public class Naca5Fragment extends Fragment{
                     extras.putDouble(NO4, naca4Value);
                     extras.putDouble(XOB, xbValue);
                     extras.putDouble(CHORD, chordValue);
-                    extras.putDouble(FO, fValue);
 
                     intent.putExtras(extras);
                     startActivity(intent);
@@ -97,7 +92,6 @@ public class Naca5Fragment extends Fragment{
                 EditText naca4 = (EditText) getView().findViewById(R.id.naca_edit_4);
                 EditText xb = (EditText) getView().findViewById(R.id.xb);
                 EditText chord = (EditText) getView().findViewById(R.id.chord);
-                EditText f = (EditText) getView().findViewById(R.id.f);
 
                 naca1.setText("");
                 naca2.setText("");
@@ -105,11 +99,9 @@ public class Naca5Fragment extends Fragment{
                 naca4.setText("");
                 xb.setText("");
                 chord.setText("");
-                f.setText("");
             }
         });
 
         return  view;
     }
-
 }

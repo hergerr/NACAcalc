@@ -26,6 +26,8 @@ public class Naca4Fragment extends Fragment{
     public static String XB = "4";
     public static String CHORD = "5";
 
+    double naca1Value, naca2Value, naca3Value, xbValue, chordValue;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,12 +46,12 @@ public class Naca4Fragment extends Fragment{
                     EditText xb = (EditText) getView().findViewById(R.id.xb);
                     EditText chord = (EditText) getView().findViewById(R.id.chord);
 
-                    double naca1Value = Double.parseDouble(naca1.getText().toString());
-                    double naca2Value = Double.parseDouble(naca2.getText().toString());
-                    double naca3Value = Double.parseDouble(naca3.getText().toString());
+                    naca1Value = Double.parseDouble(naca1.getText().toString());
+                    naca2Value = Double.parseDouble(naca2.getText().toString());
+                    naca3Value = Double.parseDouble(naca3.getText().toString());
 
-                    double xbValue = Double.parseDouble(xb.getText().toString());
-                    double chordValue = Double.parseDouble(chord.getText().toString());
+                    xbValue = Double.parseDouble(xb.getText().toString());
+                    chordValue = Double.parseDouble(chord.getText().toString());
 
                     Intent intent = new Intent(getActivity(), ComputationNaca4Activity.class);
                     Bundle extras = new Bundle();

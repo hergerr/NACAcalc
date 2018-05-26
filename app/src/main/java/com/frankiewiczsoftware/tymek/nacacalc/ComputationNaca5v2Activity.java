@@ -1,7 +1,7 @@
 package com.frankiewiczsoftware.tymek.nacacalc;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -9,26 +9,27 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.CHORD;
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.FO;
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.NO1;
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.NO2;
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.NO3;
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.NO4;
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca5Fragment.XOB;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5v2Fragment.CHORD;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5v2Fragment.FO;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5v2Fragment.NO1;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5v2Fragment.NO2;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5v2Fragment.NO3;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5v2Fragment.NO4;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5v2Fragment.XOB;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca5v2Fragment.K1;
 import static java.lang.Math.sqrt;
 
-public class ComputationNaca5Activity extends AppCompatActivity {
+public class ComputationNaca5v2Activity extends Activity {
     AdView adView;
     double naca1Value, naca2Value, naca3Value, naca4Value, xbValue, chordValue, fValue,
-            maxArrowPlaceValue, projectOfSupportForceValue, supportProfileValue,
-            mValue, k1Value, zdeValue, skeletonSupportValue, arctgVarRadians, xgeValue,
-            zgeValue, xdeValue;
+            maxArrowPlaceValue, projectOfSupportForceValue, supportProfileValue, k1Value, zdeValue,
+            skeletonSupportValue, arctgVarRadians, xgeValue,
+            zgeValue, xdeValue, k2Value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_computation_naca5);
+        setContentView(R.layout.activity_computation_naca5v2);
 
         MobileAds.initialize(this, "ca-app-pub-4960960624269878~4237480021");
         adView = (AdView) findViewById(R.id.adView1);
@@ -46,6 +47,7 @@ public class ComputationNaca5Activity extends AppCompatActivity {
         xbValue = extras.getDouble(XOB);
         chordValue = extras.getDouble(CHORD);
         fValue = extras.getDouble(FO);
+        k1Value = extras.getDouble(K1);
 
         //referencje
 
@@ -58,8 +60,7 @@ public class ComputationNaca5Activity extends AppCompatActivity {
         TextView arctgValue = (TextView) findViewById(R.id.arcrg_value);
         TextView arctgRadians = (TextView) findViewById(R.id.arctg_radians);
 
-        TextView m = (TextView) findViewById(R.id.m);
-        TextView k1 = (TextView) findViewById(R.id.k1);
+        TextView k2 = (TextView) findViewById(R.id.k2);
 
         TextView upperEdgeSupportX = (TextView) findViewById(R.id.upper_edge_support_x);
         TextView upperEdgeSupportZ = (TextView) findViewById(R.id.upper_edge_support_z);
@@ -73,26 +74,29 @@ public class ComputationNaca5Activity extends AppCompatActivity {
                 - 1.758 * xbValue * xbValue + 1.4215 * xbValue * xbValue * xbValue
                 - 0.5075 * xbValue * xbValue * xbValue * xbValue);
 
-        mValue = (3 * fValue - 7 * fValue * fValue + 8 * fValue * fValue * fValue
-                - 4 * fValue * fValue * fValue * fValue) / (sqrt(fValue * (1 - fValue))) -
-                (3 * (1 - 2 * fValue) * ((Math.PI / 2) - Math.asin(1 - 2 * fValue))) / 2;
-
-        k1Value = (6 * projectOfSupportForceValue) / mValue;
+        k2Value = (k1Value*(3*(fValue - projectOfSupportForceValue)*
+                (fValue - projectOfSupportForceValue) - fValue * fValue * fValue))/
+                ((1 - fValue)*(1 - fValue)*(1 - fValue));
 
         if (xbValue > maxArrowPlaceValue) {
-            skeletonSupportValue = (k1Value / 6) * (fValue * fValue * fValue) * (1 - xbValue);
+            skeletonSupportValue = (k2Value / 6) * ((k2Value/k1Value) * (xbValue - fValue) *
+                    (xbValue - fValue)  * (xbValue - fValue) - k2Value/k1Value*(1-fValue)*
+                    (1-fValue) * (1-fValue) * xbValue - fValue * fValue * fValue * xbValue +
+                    fValue * fValue * fValue);
         } else {
-            skeletonSupportValue = (k1Value / 6) * (xbValue * xbValue * xbValue - 3 * fValue * xbValue
-                    * xbValue + fValue * fValue * (3 - fValue) * xbValue);
+            skeletonSupportValue = (k1Value / 6) * ((xbValue - fValue)*(xbValue - fValue)
+            *(xbValue - fValue) - k2Value/k1Value*(1 - fValue)*(1 - fValue)*(1 - fValue) *
+            xbValue - fValue * fValue * fValue * xbValue + fValue * fValue * fValue);
         }
 
         double arctgVarValue;
 
         if (xbValue > maxArrowPlaceValue) {
-            arctgVarValue = -(k1Value / 6) * fValue * fValue * fValue;
+            arctgVarValue = (k1Value / 6) *(3*(k2Value/k1Value)*(xbValue-fValue)*(xbValue-fValue) -
+                    (k2Value/k1Value)*(1-fValue)*(1-fValue)*(1-fValue)-fValue*fValue*fValue);
         } else {
-            arctgVarValue = (k1Value / 6) * (3 * xbValue * xbValue - 6 * fValue * xbValue +
-                    fValue * fValue * (3 - fValue));
+            arctgVarValue = (k1Value / 6) * (3 * (xbValue - fValue)*(xbValue - fValue) - k2Value/
+                    k1Value*(1-fValue)*(1-fValue)*(1-fValue) - fValue*fValue*fValue);
         }
 
         arctgVarRadians = Math.atan(arctgVarValue);
@@ -109,8 +113,7 @@ public class ComputationNaca5Activity extends AppCompatActivity {
         profileSupport.setText(String.format("%.9f", supportProfileValue));
         skeletonSupport.setText(String.format("%.9f", skeletonSupportValue));
 
-        m.setText(String.format("%.9f", mValue));
-        k1.setText(String.format("%.9f", k1Value));
+        k2.setText(String.format("%.9f", k2Value));
 
         arctgValue.setText(String.format("%.9f", arctgVarValue));
         arctgRadians.setText(String.format("%.9f", arctgVarRadians));

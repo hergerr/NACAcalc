@@ -1,24 +1,26 @@
 package com.frankiewiczsoftware.tymek.nacacalc;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca4Fragment.CHORD;
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca4Fragment.N1;
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca4Fragment.N2;
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca4Fragment.N3;
-import static com.frankiewiczsoftware.tymek.nacacalc.Naca4Fragment.XB;
+
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca6Fragment.CHORD;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca6Fragment.NO1;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca6Fragment.NO2;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca6Fragment.NO3;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca6Fragment.NO4;
+import static com.frankiewiczsoftware.tymek.nacacalc.Naca6Fragment.XOB;
 import static java.lang.Math.sqrt;
 
-public class ComputationNaca4Activity extends AppCompatActivity {
+public class ComputationNaca6Activity extends Activity {
     AdView adView;
-    double naca1Value, naca2Value, naca3Value, xbValue, chordValue, maxArrowValue,
+    double naca1Value, naca2Value, naca3Value, naca4Value, xbValue, chordValue, maxArrowValue,
             maxArrowPlaceValue, profileSupportAccurateValue, profileSupportApproximateValue,
             skeletonSupportAccurateValue, arctgVarValue,
             arctgVarRadian, upperEdgeSupportXAccurateValue, upperEdgeSupportZAccurateValue,
@@ -27,7 +29,7 @@ public class ComputationNaca4Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_computation_naca4);
+        setContentView(R.layout.activity_computation_naca6);
 
         MobileAds.initialize(this,"ca-app-pub-4960960624269878~4237480021");
         adView = (AdView) findViewById(R.id.adView);
@@ -37,11 +39,12 @@ public class ComputationNaca4Activity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
-        naca1Value = extras.getDouble(N1);
-        naca2Value = extras.getDouble(N2);
-        naca3Value = extras.getDouble(N3);
+        naca1Value = extras.getDouble(NO1);
+        naca2Value = extras.getDouble(NO2);
+        naca3Value = extras.getDouble(NO3);
+        naca4Value = extras.getDouble(NO4);
 
-        xbValue = extras.getDouble(XB);
+        xbValue = extras.getDouble(XOB);
         chordValue = extras.getDouble(CHORD);
 
         //referencje
